@@ -6,10 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
-import android.util.Log;
+//import android.util.Log;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -19,7 +18,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mPrevButton;
     private TextView mQuestionTextView;
     private int mCurrentIndex = 0;
-    private static final String TAG = "QuizActivity";
+    //private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
 
 
@@ -54,7 +53,6 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_quiz);
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
@@ -91,7 +89,7 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                //mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
             }
 
@@ -110,44 +108,8 @@ public class QuizActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
         super.onSaveInstanceState(savedInstanceState);
-        Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
-
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-        Log.d(TAG, "onStart() called");
-    }//end onStart()
-
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        Log.d(TAG, "onPause() called");
-    }//emd onPause()
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        Log.d(TAG, "onResume() called");
-    }//end onResume()
-
-    @Override
-    public void onStop()
-    {
-        super.onStop();
-        Log.d(TAG, "onStop() called");
-    }//end onStop()
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() called");
-    }//end onDestroy()
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
