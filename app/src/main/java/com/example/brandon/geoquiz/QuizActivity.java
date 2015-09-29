@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.TextView;
-//import android.util.Log;
+import android.util.Log;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mPrevButton;
     private TextView mQuestionTextView;
     private int mCurrentIndex = 0;
-    //private static final String TAG = "QuizActivity";
+    private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
 
 
@@ -89,7 +89,7 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
             }
 
