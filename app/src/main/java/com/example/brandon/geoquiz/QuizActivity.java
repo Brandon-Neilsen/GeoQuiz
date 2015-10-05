@@ -1,5 +1,8 @@
 package com.example.brandon.geoquiz;
 
+import android.app.ActionBar;
+import android.app.Notification;
+import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +22,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mPrevButton;
     private Button mCheatButton;
     private TextView mQuestionTextView;
+    private TextView mApiLevel;
     private int mCurrentIndex = 0;
     private boolean mIsCheater;
     //private static final String TAG = "QuizActivity";
@@ -33,6 +37,7 @@ public class QuizActivity extends AppCompatActivity {
                     new TrueFalse(R.string.question_americas, true),
                     new TrueFalse(R.string.question_asia, true)
             };
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -68,6 +73,14 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        //The following block of code causes GeoQuiz to crash on start up
+
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        //{
+        //    ActionBar actionBar = getActionBar();
+        //    actionBar.setSubtitle("Bodies of Water");
+        //}
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
 
@@ -109,11 +122,6 @@ public class QuizActivity extends AppCompatActivity {
 
         });
 
-        if (savedInstanceState != null)
-        {
-            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
-        }
-
         mCheatButton = (Button)findViewById(R.id.cheat_button);
         mCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +134,14 @@ public class QuizActivity extends AppCompatActivity {
 
         });
 
+        mApiLevel = (TextView)findViewById(R.id.api_lvl);
+        mApiLevel.setText("API Level " + Build.VERSION.SDK_INT);
+
+        if (savedInstanceState != null)
+        {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
         updateQuestion();
 
     }//end onCreate(Bundle)
@@ -133,10 +149,10 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
-        super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
         savedInstanceState.putBoolean(KEY_INDEX, mIsCheater);
-    }//end onSaveInstanceState
+        super.onSaveInstanceState(savedInstanceState);
+    }//end onSaveInstanceState(Bundle)
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

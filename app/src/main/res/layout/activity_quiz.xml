@@ -61,4 +61,9 @@
 
     </LinearLayout> <!-- end prev_next -->
 
+    <TextView
+        android:id="@+id/api_lvl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout> <!-- end vertical LinearLayout -->

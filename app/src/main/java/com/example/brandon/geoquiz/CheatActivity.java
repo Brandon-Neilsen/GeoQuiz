@@ -1,5 +1,6 @@
 package com.example.brandon.geoquiz;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class CheatActivity extends AppCompatActivity
     private boolean mAnswerIsTrue;
     private boolean mIsAnswerShown = false;
     private TextView mAnswerTextView;
+    private TextView mApiLevel;
     private Button mShowAnswer;
 
 
@@ -47,12 +49,16 @@ public class CheatActivity extends AppCompatActivity
                 setAnswerShownResult(mIsAnswerShown);
             }
         });
+
+        mApiLevel = (TextView)findViewById(R.id.api_lvl);
+        mApiLevel.setText("API Level " + Build.VERSION.SDK_INT);
     }//end onCreate()
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
-        super.onSaveInstanceState(savedInstanceState);
+
         savedInstanceState.putBoolean(KEY_CHEAT, mIsAnswerShown);
+        super.onSaveInstanceState(savedInstanceState);
     }
 }//end CheatActivity class

@@ -1,8 +1,5 @@
 package com.example.brandon.geoquiz;
 
-/**
- * Created by Brandon on 9/25/2015.
- */
 public class TrueFalse {
 
     private int mQuestion;
