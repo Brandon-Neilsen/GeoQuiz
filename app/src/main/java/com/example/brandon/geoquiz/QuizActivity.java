@@ -27,6 +27,7 @@ public class QuizActivity extends AppCompatActivity {
     private boolean mIsCheater;
     //private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
+    private static final String KEY_CHEATER = "cheater";
 
 
     private TrueFalse[] mQuestionBank = new TrueFalse[]
@@ -78,7 +79,7 @@ public class QuizActivity extends AppCompatActivity {
 
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
         //{
-        //    ActionBar actionBar = getActionBar();
+        //    ActionBar actionBar = getSupportActionBar();
         //    actionBar.setSubtitle("Bodies of Water");
         //}
 
@@ -140,6 +141,7 @@ public class QuizActivity extends AppCompatActivity {
         if (savedInstanceState != null)
         {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBoolean(KEY_CHEATER, false);
         }
 
         updateQuestion();
@@ -149,9 +151,10 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
-        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
-        savedInstanceState.putBoolean(KEY_INDEX, mIsCheater);
         super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+        savedInstanceState.putBoolean(KEY_CHEATER, mIsCheater);
+
     }//end onSaveInstanceState(Bundle)
 
     @Override
