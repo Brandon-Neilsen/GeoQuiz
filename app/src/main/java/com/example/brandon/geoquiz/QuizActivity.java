@@ -1,7 +1,7 @@
 package com.example.brandon.geoquiz;
 
-import android.app.ActionBar;
-import android.app.Notification;
+//import android.app.ActionBar;
+//import android.app.Notification;
 import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
